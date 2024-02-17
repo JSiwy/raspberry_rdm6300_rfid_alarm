@@ -1,12 +1,8 @@
 # Alarm rfid
 
-
 [![Python 3.9.2](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-392/)
 
 System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501, przekaźnik oraz posiadaną wsześniej syrenę z modulatorem. Całość zasilana jest z 12 voltowego akumulatora z przetwornicą do zasilania RPi 
-
-
-
 
 # Table of contents
 
@@ -16,7 +12,6 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
     - `Problem z sprawedzeniem na serwerze odczytanych kart rfid`
   - [Combination of flags](#combination-of-flags)
 - [Contributing](#contributing)
-
 
 # Powstawanie
 
@@ -32,7 +27,6 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 #### Uruchomienie czytnika na RPi miało być bajecznie proste, ot pobierasz bibliotekę, uruchamiasz przykład i działa. Lecz nie tym razem, w konsoli wita nas komunikat: 
 
 >WARNING:root:[/dev/ttyS0] got trash resetting rfid read to assume we are at the beginning
-
 
   ![alt text](Media/IMG_4069-1.jpg)
 
@@ -66,7 +60,6 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 
 ### Problem z sprawedzeniem na serwerze odczytanych kart rfid
   
-
 1. Po przyłożeniu karty do czytnika odczytany powienen zostac identyfikator (tag) karty
   ![alt text](Media/427003797_292757716858302_1164766261338142451_n.jpg)
 
@@ -74,7 +67,6 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 - Kod 204 - Użytkownik uwierzetelniony w systemie
 - Kod 422 - Użytkownik nie znajduje się w bazie danych, błąd
   
-
 3. W naszym przypadku odpowiedzią był kod 415
    > 415 Unsupported Media Type
 
@@ -91,8 +83,6 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 - Po zmianie nagłówka zapytanie zaczęło działać.
   ![alt text](Media/427746558_422241966978912_8338552475153075465_n.png)
 
-
-
 # Powstawanie
 
 [(Back to top)](#table-of-contents)
@@ -107,11 +97,9 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 ![alt text](Media/oprogramowanie.drawio.png)
     *Na tym etapie rozważaliśmy użycie NodeMCU by zastąpić arduino oraz zyskać komunikacje bezprzewodową dzięki modułowi ESP8266*
 
-
 3. Nastepnie biąrąc pod uwage oczekiwane rezulataty zdecydowaliśmy o przejsciu na wykorszystanie mikrokomputera raspberry PI w wersji posiadanej (3b+):
 ![alt text](Media/rpi3+0.png)
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
-5. 
 
 # Schemat działania
 
@@ -149,5 +137,3 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 ### Wsparcie merytoryczne i debugowanie:
 - rbml
 - mz
-
-
