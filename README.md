@@ -28,22 +28,22 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 
 - Zbudowany układ do testu odczytów:
   
-  ![alt text](<Zrzut ekranu 2024-02-17 222455.png>)
+  ![alt text](<Media/Zrzut ekranu 2024-02-17 222455.png>)
 #### Uruchomienie czytnika na RPi miało być bajecznie proste, ot pobierasz bibliotekę, uruchamiasz przykład i działa. Lecz nie tym razem, w konsoli wita nas komunikat: 
 
 >WARNING:root:[/dev/ttyS0] got trash resetting rfid read to assume we are at the beginning
 
 
-  ![alt text](IMG_4069-1.jpg)
+  ![alt text](Media/IMG_4069-1.jpg)
 
 #### Poszukiwanie błędów rozpocząłem od sprawdzenia baud-u portu szeregowego. Zgodnie z dokumentacją modułu rdm6300 baud to 9600. Po sprawdzeniu biblioteki – ślepy trop, biblioteka sama ustawia prawidłową częstotliwość.
 
 - Funkcja z biblioteki rdm6300
   
-  ![alt text](<Zrzut ekranu 2024-02-17 221203.png>)
+  ![alt text](<Media/Zrzut ekranu 2024-02-17 221203.png>)
 
 - Po kilku próbach sukces – udaje się, jest odczyt. Niestety działa raz:
-  ![alt text](IMG_4074-1.jpg)
+  ![alt text](Media/IMG_4074-1.jpg)
 
 #### Kolejny etap to dalsza analiza biblioteki. Wynika z niej, że oczekuje ona na odczytanie 0x02 – oznacza ono początek ID karty i 0x03, które oznacza koniec transmisji. Wszystko co zostało odebrane pomiędzy zamieniane jest na znaki zgodnie z tablicą ASCII. Skoro więc otrzymujemy błąd oznacza to, że odczytujemy coś co nie pasuje do patternu biblioteki. 
 
@@ -51,16 +51,16 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
   >minicom -b 9600 -H -o -D /dev/ttyS0
 
 - Jeden z odczytów
-  ![alt text](IMG_4079-1.jpg)
+  ![alt text](Media/IMG_4079-1.jpg)
 
 - Inny odczyt
-  ![alt text](IMG_4080-1.jpg)
+  ![alt text](Media/IMG_4080-1.jpg)
 
 - Prawidłowy odczyt udany za którymś razem: 
-  ![alt text](IMG_4082-1.jpg)
+  ![alt text](Media/IMG_4082-1.jpg)
 
 #### Przy dalszej obserwacji okazało się, że skrypt działa poprawnie tylko i wyłącznie, gdy na raspberry świeci się czerwona dioda pwr:
-  ![alt text](Aspose.Words.5702ebb1-458b-40ca-bd8e-2be6e094d953.008.png)
+  ![alt text](Media/Aspose.Words.5702ebb1-458b-40ca-bd8e-2be6e094d953.008.png)
 
 #### Rozwiązaniem okazało sie przełączenie zasilania na zasilacz podający na wyjściu 5.35v
 
@@ -68,7 +68,7 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
   
 
 1. Po przyłożeniu karty do czytnika odczytany powienen zostac identyfikator (tag) karty
-  ![alt text](427003797_292757716858302_1164766261338142451_n.jpg)
+  ![alt text](Media/427003797_292757716858302_1164766261338142451_n.jpg)
 
 2. Odczytany tag powinien zostac wysłany zapytaniem POST do serwera i na podstawie kodu odpowiedzi powinna zostac podjęta decyzja o dalszym postępowaniu 
 - Kod 204 - Użytkownik uwierzetelniony w systemie
@@ -78,18 +78,18 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 3. W naszym przypadku odpowiedzią był kod 415
    > 415 Unsupported Media Type
 
-      ![alt text](maly.png)
+      ![alt text](Media/maly.png)
 
     Oznacza on, że serwer odmawia przyjęcia żądania, ponieważ format ładunku jest w nieobsługiwanym formacie.
     Po krótkich poszukiwaniach znalazłem informację, że:
     > Problem z formatem może wynikać ze wskazanego Content-Type lub Content-Encoding żądania lub w wyniku bezpośredniej inspekcji danych.
 
 - Po wypisaniu dokładniejszej informacji pokazuje się taki zapis:
- ![alt text](duzy415.png)
+ ![alt text](Media/duzy415.png)
  Na nasze szczęście pokazuje on główną przyczyne błędu i rozwiązanie, trzbe zmienić header `content-type` z `application/json` na `application/ld+json`.
 
 - Po zmianie nagłówka zapytanie zaczęło działać.
-  ![alt text](427746558_422241966978912_8338552475153075465_n.png)
+  ![alt text](Media/427746558_422241966978912_8338552475153075465_n.png)
 
 
 
@@ -100,16 +100,16 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego proojektu ze switch case opartym o czytnik rdm6300 i arduino nano. 
 
 1. Schemat pierwszego zamysłu:
-![alt text](schem1.png)
+![alt text](Media/schem1.png)
     *Zakładał on zasilenie arduino przez pin `vin` oraz komunikacje za pomoca portu szeregowego przy użyciu skrętki, dodatkowo przewodem tym miało lecieć zasilanie syreny*
 
 2. Po analizie szkicu doszliśmy do wniosku iż plan jest nie optymalny oraz zaczęliśmy analizowac dodatkowe funkcje które mogły by byc przydatne:
-![alt text](oprogramowanie.drawio.png)
+![alt text](Media/oprogramowanie.drawio.png)
     *Na tym etapie rozważaliśmy użycie NodeMCU by zastąpić arduino oraz zyskać komunikacje bezprzewodową dzięki modułowi ESP8266*
 
 
 3. Nastepnie biąrąc pod uwage oczekiwane rezulataty zdecydowaliśmy o przejsciu na wykorszystanie mikrokomputera raspberry PI w wersji posiadanej (3b+):
-![alt text](rpi3+0.png)
+![alt text](Media/rpi3+0.png)
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
 5. 
 
