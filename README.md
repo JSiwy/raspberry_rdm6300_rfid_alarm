@@ -22,13 +22,40 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 | Czytnik kart 125kHz  | RDM6300        |https://cutt.ly/mwBoo0Vw|
 |Czujnik ruchu| PIR HC-SR501      |https://cutt.ly/UwBoo5fg|
 |Przekaźnik| napięcie 3.3V       |https://cutt.ly/uwBopiY6|
-|Dioda LED|Opcjonalne|Sygnalizator otwarcia|
+|Dioda LED|Opcjonalne|https://cutt.ly/fwBomeOj|
 |Rezystor|2x 1kΩ|https://cutt.ly/GwBopXaX|
 |Syrena|Opcjonalne|Jakakolwiek syrena 12V|
 
 *Powyższe linki nie są linkami sponsorowanymi a wskazują tylko na przykładowy egzemplarz części zastosowanej w projekcie*
 
+# Budowa
+#### W trakcie budowy pierwszej fazy posłużyłem sie poradnikiem:
+>https://mad-tinkerer-me.medium.com/rfid-with-raspberry-pi-on-the-cheap-766ae0b6c97e
 
+#### Autror tego poradnika napisał także bibliotekę, która została wykorzystana w tym projekcie:
+>https://github.com/mad-tinkerer/python-rdm6300
+1. Podłączenie czytnika 
+  <figure>
+    <img src="1 ey0cDjcZQJkMmhHq5KZD9Q.jpg"
+         alt="uklad testowy">
+    <figcaption><i>Schemat podłączanie czytnika do RPi</i></figcaption>
+</figure>
+
+  #### <mark>Pamiętaj o użyciu dzielnika napięcia, inaczej zostaną uszkodzone piny GPIO na raspberry</mark>
+2. Podłączenie czunika ruchu
+     
+     1. Pin GND połączyc z masą RPi
+     2. Pin VCC połączyć z magistralą 5v
+     3. Pin OUT podłączyć do 26 pinu RPi
+   
+4. Podłączenie przekaźnika
+   1.  Podłączyć pin "+" do pinu pinu 3.3v
+   2.  Podłączyc pin "-" do masy 
+   3.  Podłączyc pin "S" do w naszym przypadku pinu 18
+5. Podłączyc diode sygnalizującą
+   1. Pin "-" do masy
+   2. Pin "R" do pinu 38
+   3. Pin "G" do pinu 40
 # Powstawanie
 
 [(Back to top)](#table-of-contents)
@@ -50,7 +77,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 ![alt text](Media/427790875_3616735938541533_3556004323310461416_n.jpg)
 *Złożony jeszcze prototypowo lecz w pełni układ alarmu*
 ![alt text](Media/rys2_rpi.png)
-
+*Schemat ideowy połączeń*
 # Schemat działania
 
 [(Back to top)](#table-of-contents)
