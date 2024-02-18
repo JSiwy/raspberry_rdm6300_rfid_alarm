@@ -124,6 +124,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
   
 1. Po przyłożeniu karty do czytnika odczytany powienen zostac identyfikator (tag) karty
   ![alt text](Media/427003797_292757716858302_1164766261338142451_n.jpg)
+  *Prawidłowo odczytany i zdekodowany tag karty*
 
 2. Odczytany tag powinien zostac wysłany zapytaniem POST do serwera i na podstawie kodu odpowiedzi powinna zostac podjęta decyzja o dalszym postępowaniu 
 - Kod 204 - Użytkownik uwierzetelniony w systemie
@@ -131,19 +132,25 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
   
 3. W naszym przypadku odpowiedzią był kod 415
    > 415 Unsupported Media Type
-
-      ![alt text](Media/maly.png)
+  <figure>
+    <img src="Media/maly.png"
+         alt="uklad testowy">
+    <figcaption><i>Błąd zwracany przez serwer</i></figcaption>
+  </figure>
 
     Oznacza on, że serwer odmawia przyjęcia żądania, ponieważ format ładunku jest w nieobsługiwanym formacie.
     Po krótkich poszukiwaniach znalazłem informację, że:
-    > Problem z formatem może wynikać ze wskazanego Content-Type lub Content-Encoding żądania lub w wyniku bezpośredniej inspekcji danych.
+  >Problem z formatem może wynikać ze wskazanego Content-Type lub Content-Encoding żądania lub w wyniku bezpośredniej inspekcji danych.
 
 - Po wypisaniu dokładniejszej informacji pokazuje się taki zapis:
  ![alt text](Media/duzy415.png)
- Na nasze szczęście pokazuje on główną przyczyne błędu i rozwiązanie, trzbe zmienić header `content-type` z `application/json` na `application/ld+json`.
+ *Zapis błędu zwracanego przez serwer*
+ 
+  Na nasze szczęście pokazuje on główną przyczyne błędu i rozwiązanie, trzbe zmienić header `content-type` z `application/json` na `application/ld+json`.
 
 - Po zmianie nagłówka zapytanie zaczęło działać.
   ![alt text](Media/427746558_422241966978912_8338552475153075465_n.png)
+  *Prawidłowa odpowiedź uzyskana z serwera*
 
 ### Problem z zasterowaniem przekaźnika
   
