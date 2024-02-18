@@ -7,9 +7,10 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 # Table of contents
 
 - [Powstawanie](#Powstawanie)
-  - [Problemy](#flags)
-    - `Problemy z odczytem rfid`
-    - `Problem z sprawedzeniem na serwerze odczytanych kart rfid`
+  - [Problemy](#w-trakcie-procesu-powstawanie-napotkałem-całkiem-sporo-problemów)
+    - [`Problemy z odczytem rfid`](#problemy-z-odczytem-rfid)
+    - [`Problem z sprawedzeniem na serwerze odczytanych kart rfid`](#problem-z-sprawedzeniem-na-serwerze-odczytanych-kart-rfid)
+    - [`Problem z zasterowaniem przekaźnika`](#problem-z-zasterowaniem-przekaźnika)
 - [Contributing](#contributing)
 
 
