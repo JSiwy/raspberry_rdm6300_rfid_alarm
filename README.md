@@ -31,7 +31,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 ![alt text](Media/rpi3+0.png)
 *Model RPi użyty w projekcie*
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
-![alt text](427790875_3616735938541533_3556004323310461416_n.jpg)
+![alt text](Media/427790875_3616735938541533_3556004323310461416_n.jpg)
 *Złożony jeszcze prototypowo lecz w pełni układ alarmu*
 # Schemat działania
 
