@@ -9,7 +9,8 @@ import json
 reader = rdm6300.Reader('/dev/ttyS0')
 locked_url = '/locked'
 user_url = '/check_rfid'
-RELAY = 18 #GPIO 24
+#Czytnik podlączony do pinu 10 (RX) 
+RELAY = 18 
 GREEN = 40
 RED = 38
 CZUJ = 26 
@@ -83,7 +84,6 @@ while True:
                     log_time = time.time()
                     Alarm(log_time)
                 Check(id)
-                
             else:
                 GPIO.output(RELAY, GPIO.LOW) #wyłączenie syreny
     finally:
