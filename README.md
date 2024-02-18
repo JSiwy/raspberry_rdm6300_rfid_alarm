@@ -1,4 +1,4 @@
-# Alarm rfid
+# RDM6300 rfid alarm 
 
 [![Python 3.9.2](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-392/)
 
@@ -47,16 +47,22 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 
 ### Problemy z odczytem rfid
 
-  
-![alt text](<Media/Zrzut ekranu 2024-02-17 222455.png>)
-    *Zbudowany układ do testu odczytów*
-  
+<figure>
+    <img src="Media/Zrzut ekranu 2024-02-17 222455.png"
+         alt="uklad testowy">
+    <figcaption><i>Zbudowany układ do testu odczytów</i></figcaption>
+</figure>
+
 #### Uruchomienie czytnika na RPi miało być bajecznie proste, ot pobierasz bibliotekę, uruchamiasz przykład i działa. Lecz nie tym razem, w konsoli wita nas komunikat: 
 
 >WARNING:root:[/dev/ttyS0] got trash resetting rfid read to assume we are at the beginning
 
-  ![alt text](Media/IMG_4069-1.jpg)
-    *Komunikat błędu wyświetlany w konsoli*
+<figure>
+    <img src="Media/IMG_4069-1.jpg"
+         alt="uklad testowy">
+    <figcaption><i>Komunikat błędu wyświetlany w konsoli</i></figcaption>
+</figure>
+
 #### Poszukiwanie błędów rozpocząłem od sprawdzenia baud-u portu szeregowego. Zgodnie z dokumentacją modułu rdm6300 baud to 9600. Po sprawdzeniu biblioteki – ślepy trop, biblioteka sama ustawia prawidłową częstotliwość.
 
 - Funkcja z biblioteki rdm6300
@@ -65,7 +71,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 
 - Po kilku próbach sukces – udaje się, jest odczyt. Niestety działa raz:
   ![alt text](Media/IMG_4074-1.jpg)
-    *Pojedyńczy prawidłowy odczyt w morzu błędów*
+  *Pojedyńczy prawidłowy odczyt w morzu błędów*
 
 #### Kolejny etap to dalsza analiza biblioteki. Wynika z niej, że oczekuje ona na odczytanie 0x02 – oznacza ono początek ID karty i 0x03, które oznacza koniec transmisji. Wszystko co zostało odebrane pomiędzy zamieniane jest na znaki zgodnie z tablicą ASCII. Skoro więc otrzymujemy błąd oznacza to, że odczytujemy coś co nie pasuje do patternu biblioteki. 
 
