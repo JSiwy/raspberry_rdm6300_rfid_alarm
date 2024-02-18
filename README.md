@@ -91,8 +91,12 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
   *Sukces, mamy to czego poszukiwaliśmy*
 
 #### Przy dalszej obserwacji okazało się, że skrypt działa poprawnie tylko i wyłącznie, gdy na raspberry świeci się czerwona dioda pwr:
-  ![alt text](Media/Aspose.Words.5702ebb1-458b-40ca-bd8e-2be6e094d953.008.png)
-  *Zaznaczona dioda, która musi się świecić*
+
+  <figure>
+    <img src="Media/Aspose.Words.5702ebb1-458b-40ca-bd8e-2be6e094d953.008.png"
+         alt="uklad testowy">
+    <figcaption><i>Zaznaczona dioda, która musi się świecić</i></figcaption>
+</figure>
 
 #### Rozwiązaniem okazało sie przełączenie zasilania na zasilacz podający na wyjściu 5.35v
 
