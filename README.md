@@ -49,7 +49,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
 ![alt text](Media/427790875_3616735938541533_3556004323310461416_n.jpg)
 *Złożony jeszcze prototypowo lecz w pełni układ alarmu*
-
+![alt text](Media/rys2_rpi.png)
 
 # Schemat działania
 
