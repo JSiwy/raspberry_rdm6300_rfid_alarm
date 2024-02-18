@@ -22,18 +22,13 @@ while True:
     GPIO.setup(GREEN, GPIO.OUT)
     try:
         if GPIO.input(CZUJ):
-            print("t2")
             responseA = requests.get(locked_url)
             if responseA.json().get('locked'):
-                print('t1')
                 card = reader.read()
                 time.sleep(0.1)
                 id = card.value
-                print(id)
                 payload = {"rfid": f'{id}'}
                 response = requests.post(user_url,data = json.dumps(payload), headers = {'content-type':'application/ld+json'})
-                print(json)
-                print(response)
                 if response.status_code == 422:
                     print('User not found. Alarm!')
                     GPIO.output(RELAY, GPIO.HIGH)
@@ -48,7 +43,6 @@ while True:
                 else:
                     print('Error!')
             else:
-                print('t4')
                 GPIO.output(RELAY, GPIO.LOW) #wyłączenie syreny
     finally:
         GPIO.cleanup()
