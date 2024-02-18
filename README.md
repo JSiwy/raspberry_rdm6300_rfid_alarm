@@ -29,8 +29,10 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 
 3. Nastepnie biąrąc pod uwage oczekiwane rezulataty zdecydowaliśmy o przejsciu na wykorszystanie mikrokomputera raspberry PI w wersji posiadanej (3b+):
 ![alt text](Media/rpi3+0.png)
+*Model RPi użyty w projekcie*
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
-
+![alt text](427790875_3616735938541533_3556004323310461416_n.jpg)
+*Złożony jeszcze prototypowo lecz w pełni układ alarmu*
 # Schemat działania
 
 [(Back to top)](#table-of-contents)
@@ -125,7 +127,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 - Po zmianie nagłówka zapytanie zaczęło działać.
   ![alt text](Media/427746558_422241966978912_8338552475153075465_n.png)
 
-
+### Problem z zasterowaniem przekaźnika
   
 # Dalszy rozwój
 
