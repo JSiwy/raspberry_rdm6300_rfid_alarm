@@ -11,14 +11,18 @@ locked_url = '/locked'
 user_url = '/check_rfid'
 RELAY = 18 #GPIO 24
 GREEN = 40
+RED = 38
 CZUJ = 26 
 
 def Alarm():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(RELAY, GPIO.OUT)
+    GPIO.setup(RED, GPIO.OUT)
     GPIO.output(RELAY, GPIO.HIGH)
-    time.sleep(30)
+    GPIO.output(RED, GPIO.HIGH)
+    time.sleep(10)
     GPIO.output(RELAY, GPIO.LOW)
+    GPIO.output(RED, GPIO.LOW)
     GPIO.cleanup()
 
 while True:
@@ -36,11 +40,11 @@ while True:
                     card = reader.read()
                     time.sleep(0.1)
                     id = card.value
-                    if(id!=None):
+                    if id is not None:
                         login_time = time.time()
                         break
                     time.sleep(1)
-                if(id == None):
+                else:
                     Alarm()
                 payload = {"rfid": f'{id}'}
                 response = requests.post(user_url,data = json.dumps(payload), headers = {'content-type':'application/ld+json'})

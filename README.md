@@ -145,7 +145,7 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
     <figcaption><i>Zaznaczona dioda, która musi się świecić</i></figcaption>
 </figure>
 
-#### Rozwiązaniem okazało sie przełączenie zasilania na zasilacz podający na wyjściu 5.35v
+#### Rozwiązaniem okazało sie przełączenie zasilania na zasilacz podający na wyjściu 5.35v, lecz było to nie w pełni poprawne rozwiązanie. Prawdziwą przyczyną były spadki napięcia na przewodzie zasilającym, dopiero na przewodzie o większym przekroju raspberry ruszyło przy prawidłowym napięciu 5v
 
 ### Problem z sprawedzeniem na serwerze odczytanych kart rfid
   
