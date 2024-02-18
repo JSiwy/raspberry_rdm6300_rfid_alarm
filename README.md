@@ -11,7 +11,22 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
     - [`Problemy z odczytem rfid`](#problemy-z-odczytem-rfid)
     - [`Problem z sprawedzeniem na serwerze odczytanych kart rfid`](#problem-z-sprawedzeniem-na-serwerze-odczytanych-kart-rfid)
     - [`Problem z zasterowaniem przekaźnika`](#problem-z-zasterowaniem-przekaźnika)
+- [Plany na Rozwój](#dalszy-rozwój)
 - [Contributing](#contributing)
+
+# Wykorzystane elementy
+#### Z założenia miał być to prosty projekt. Składa się on z:
+| Element      | Szczegóły | Przykładoy artykuł| 
+| ----------- | ----------- | -----------------|
+| Mikrokomputer      | Raspberry Pi 3B+       |https://cutt.ly/QwBooHAO|
+| Czytnik kart 125kHz  | RDM6300        |https://cutt.ly/mwBoo0Vw|
+|Czujnik ruchu| PIR HC-SR501      |https://cutt.ly/UwBoo5fg|
+|Przekaźnik| napięcie 3.3V       |https://cutt.ly/uwBopiY6|
+|Dioda LED|Opcjonalne|Sygnalizator otwarcia|
+|Rezystor|2x 1kΩ|https://cutt.ly/GwBopXaX|
+|Syrena|Opcjonalne|Jakakolwiek syrena 12V|
+
+*Powyższe linki nie są linkami sponsorowanymi a wskazują tylko na przykładowy egzemplarz części zastosowanej w projekcie*
 
 
 # Powstawanie
@@ -34,6 +49,8 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 4. Po dostosowaniu projektu całość została złożona w jeden układ:
 ![alt text](Media/427790875_3616735938541533_3556004323310461416_n.jpg)
 *Złożony jeszcze prototypowo lecz w pełni układ alarmu*
+
+
 # Schemat działania
 
 [(Back to top)](#table-of-contents)
@@ -137,8 +154,8 @@ Od pojawienia się pomysł wielkorotnie ewoluował. Zaczęlo się od prostego pr
 ### W planach jest dalszy rozwój projektu
 
 #### Rozbudowa funkcjonalności serwera
-- Dodanie logów osób autoryzowanych
-- Wysyłanie maila w momencie błędnej autoryzacji/wywołania alarmu
+- [ ] Dodanie logów osób autoryzowanych
+- [ ] Wysyłanie maila w momencie błędnej autoryzacji/wywołania alarmu
 
 # Contributing
 
