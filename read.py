@@ -2,12 +2,9 @@
 
 import RPi.GPIO as GPIO
 import rdm6300
-#from dotenv import load_dotenv
 import requests
 import time
 import json
-
-#load_dotenv()
 
 reader = rdm6300.Reader('/dev/ttyS0')
 
@@ -48,13 +45,10 @@ while True:
                     time.sleep(120)
                     GPIO.output(GREEN, GPIO.LOW)
                     time.sleep(30)
-                elif response.status_code == None:
-                    print('t3')
                 else:
                     print('Error!')
             else:
                 print('t4')
                 GPIO.output(RELAY, GPIO.LOW) #wyłączenie syreny
-                
     finally:
         GPIO.cleanup()
