@@ -36,7 +36,7 @@ System oparty o RPi 3b+, czytnik rfid 125khz rdm6300, czujnik ruchu PIR HC-SR501
 >https://github.com/mad-tinkerer/python-rdm6300
 1. Podłączenie czytnika 
   <figure>
-    <img src="1 ey0cDjcZQJkMmhHq5KZD9Q.jpg"
+    <img src="Media/1 ey0cDjcZQJkMmhHq5KZD9Q.jpg"
          alt="uklad testowy">
     <figcaption><i>Schemat podłączanie czytnika do RPi</i></figcaption>
 </figure>
