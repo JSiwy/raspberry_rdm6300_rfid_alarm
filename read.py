@@ -28,6 +28,7 @@ def Alarm(log_time):
             GPIO.output(RED, GPIO.LOW)
             id = card.value
             Check(id)
+            id = None
         time.sleep(1)
     GPIO.output(RELAY, GPIO.LOW)
     GPIO.output(RED, GPIO.LOW)
@@ -44,7 +45,6 @@ def Disarm(login_time):
         time.sleep(0.1)
         if card is not None:
             GPIO.output(GREEN, GPIO.HIGH)
-            id = card.value
             login_time = time.time()
         time.sleep(1)
 
